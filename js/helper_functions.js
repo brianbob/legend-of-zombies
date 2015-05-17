@@ -178,3 +178,8 @@ function arrowHitZombieFace(zombie, arrow) {
   zombies[zombie.name].damage();
   //var destroyed = zombies[zombie.name].damage();
 }
+
+function gameOver() {
+  player.kill()
+  console.log('you suck! game over...');
+}
