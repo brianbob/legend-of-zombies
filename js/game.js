@@ -2,7 +2,7 @@
 var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update });
 var player;
 var cursors;
-var bullets;
+var arrows;
 var zombies;
 var direction;
 var fireRate = 200;
@@ -51,15 +51,15 @@ function create() {
     zombies.push(new Zombie(i, game, player));
   }
 
-  // create our bullets
-  bullets = game.add.group();
-  bullets.enableBody = true;
-  bullets.physicsBodyType = Phaser.Physics.ARCADE;
+  // create our arrows
+  arrows = game.add.group();
+  arrows.enableBody = true;
+  arrows.physicsBodyType = Phaser.Physics.ARCADE;
   // @TODO: Figure out how to manage arrows. Also, print that value to the
   // screen
-  bullets.createMultiple(30, 'arrow');
-  bullets.setAll('outOfBoundsKill', true);
-  bullets.setAll('checkWorldBounds', true);
+  arrows.createMultiple(30, 'arrow');
+  arrows.setAll('outOfBoundsKill', true);
+  arrows.setAll('checkWorldBounds', true);
 
   //  Our controls.
   cursors = game.input.keyboard.createCursorKeys();
@@ -76,8 +76,8 @@ function update() {
   {
     if (zombies[i].alive) {
       //enemiesAlive++;
-      // game.physics.arcade.collide(tank, enemies[i].tank);
-      // game.physics.arcade.overlap(bullets, enemies[i].tank, bulletHitEnemy, null, this);
+      game.physics.arcade.collide(player, zombies[i].zombie);
+      game.physics.arcade.overlap(arrows, zombies[i].zombie, arrowHitZombieFace, null, this);
       zombies[i].update();
     }
   }

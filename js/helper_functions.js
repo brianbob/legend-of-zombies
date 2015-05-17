@@ -2,7 +2,7 @@ function fireArrow () {
   // Make sure we don't fire a million rounds per click.
   if (game.time.now >= nextFire ) {
     nextFire = game.time.now + fireRate;
-    var bullet = bullets.getFirstExists(false);
+    var bullet = arrows.getFirstExists(false);
     bullet.reset(player.x, player.y);
 
     //bullet.rotation = game.physics.arcade.moveToPointer(bullet, 1000, game.input.activePointer, 500);
@@ -133,7 +133,7 @@ Zombie = function (index, game, player) {
 
 Zombie.prototype.damage = function() {
 
-  this.health -= 1;
+  this.health -= 3;
 
   if (this.health <= 0) {
       this.alive = false;
@@ -153,3 +153,9 @@ Zombie.prototype.update = function() {
   // @TODO Update the zombie x and y velocity
   this.zombie.frame = 1;
 };
+
+function arrowHitZombieFace(zombie, arrow) {
+  arrow.kill();
+  zombies[zombie.name].damage();
+  //var destroyed = zombies[zombie.name].damage();
+}
