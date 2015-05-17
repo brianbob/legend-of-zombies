@@ -81,7 +81,7 @@ function update() {
     }
   }
   
-  game.physics.arcade.overlap(player, zombies, gameOver, null, this);
+  game.physics.arcade.collide(player, zombies, gameOver, null, this);
   
 }
 
