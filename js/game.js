@@ -48,7 +48,7 @@ function create() {
   enemiesAlive = 20;
 
   for (var i = 0; i < enemiesTotal; i++) {
-    zombies.push(new EnemyTank(i, game, player));
+    zombies.push(new Zombie(i, game, player));
   }
 
   // create our bullets
