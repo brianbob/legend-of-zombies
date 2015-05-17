@@ -125,7 +125,7 @@ Zombie = function (index, game, player) {
   this.zombie.animations.add('right', [24, 25, 26], 10, true);
   this.zombie.animations.add('down', [0, 1, 2], 10, true);
   this.zombie.animations.add('up', [36, 37, 38], 10, true);
-  this.zombie.frame = 1;
+  
   //this.zombie.angle = game.rnd.angle();
   //game.physics.arcade.velocityFromRotation(this.tank.rotation, 100, this.tank.body.velocity);
 
