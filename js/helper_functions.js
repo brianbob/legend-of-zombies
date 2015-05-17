@@ -158,14 +158,14 @@ Zombie.prototype.update = function() {
   if(this.player.x < this.zombie.x) {
     this.zombie.body.velocity.x = -25;
   }
-  else {
+  else if (this.player.x > this.zombie.x){
     this.zombie.body.velocity.x = 25;
   }
   
   if(this.player.y < this.zombie.y) {
     this.zombie.body.velocity.y = -25;
   }
-  else {
+  else if(this.player.y > this.zombie.y) {
     this.zombie.body.velocity.y = 25;
   }
 
