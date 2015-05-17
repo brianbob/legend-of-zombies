@@ -13,7 +13,7 @@ var enemiesTotal;
 
 function preload() {
   game.load.image('grass', 'assets/grass3.jpg');
-  game.load.image('zombies', 'assets/zombies.png', 32, 32);
+  game.load.spritesheet('zombies', 'assets/zombies.png', 32, 32);
   game.load.spritesheet('dude', 'assets/link.png', 32, 40);
   game.load.image('arrow', 'assets/arrow.png');
 }
