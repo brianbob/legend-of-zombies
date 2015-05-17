@@ -44,7 +44,7 @@ function create() {
   
   // create our zombies
   zombies = [];
-  enemiesTotal = 20;
+  enemiesTotal = 1;
   enemiesAlive = 20;
 
   for (var i = 0; i < enemiesTotal; i++) {
