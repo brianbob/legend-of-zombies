@@ -33,3 +33,122 @@ function fireArrow () {
   }
 }
 
+function updatePlayer() {
+  //  Reset the players velocity (movement)
+  player.body.velocity.x = 0;
+  player.body.velocity.y = 0;
+
+  if (cursors.left.isDown)
+  {
+    //  Move to the left
+    player.body.velocity.x = -150;
+    player.animations.play('left');
+    direction = 'left';
+  }
+  else if (cursors.right.isDown)
+  {
+    //  Move to the right
+    player.body.velocity.x = 150;
+    player.animations.play('right');
+    direction = 'right';
+  }
+  else if (cursors.up.isDown )
+  {
+    player.body.velocity.y = -150;
+    player.animations.play('up');
+    direction = 'up';
+  }
+  else if (cursors.down.isDown )
+  {
+    player.body.velocity.y = +150;
+    player.animations.play('down');
+    direction = 'down';
+  }
+  else
+  {   //  Stand still
+    player.animations.stop();
+    switch(direction) {
+      case 'left':
+        player.frame = 13;
+        break;
+      case 'right':
+        player.frame = 4;
+        break;
+      case 'up':
+        player.frame = 29;
+        break;
+      case 'down':
+        player.frame = 18;
+        break;
+      default:
+        //player.frame = 18;
+    }
+  }
+
+  if (spacebar.isDown)
+  {
+    fireArrow();
+  }
+}
+
+ /**
+ * Create our zombie class
+ *
+ * @param {type} index
+ * @param {type} game
+ * @param {type} player
+ * @returns {Zombie} 
+ * */
+Zombie = function (index, game, player) {
+
+  var x = game.world.randomX;
+  var y = game.world.randomY;
+
+  this.game = game;
+  // @TODO make this different depending on the type of zombie.
+  this.health = 3;
+  this.player = player;
+  this.alive = true;
+
+  // I have no idea what this does.
+  this.zombie.anchor.set(0.5);
+
+  this.zombie.name = index.toString();
+  game.physics.enable(this.zombie, Phaser.Physics.ARCADE);
+  this.zombie.body.immovable = false;
+  this.zombie.body.collideWorldBounds = true;
+  this.zombie.body.bounce.setTo(1, 1);
+  
+  this.zombie = game.add.sprite(x, y, 'zombies');
+  this.zombie.animations.add('left', [12, 13, 14], 10, true);
+  this.zombie.animations.add('right', [24, 25, 26], 10, true);
+  this.zombie.animations.add('down', [0, 1, 2], 10, true);
+  this.zombie.animations.add('up', [36, 37, 38], 10, true);
+
+  //this.zombie.angle = game.rnd.angle();
+  //game.physics.arcade.velocityFromRotation(this.tank.rotation, 100, this.tank.body.velocity);
+
+};
+
+Zombie.prototype.damage = function() {
+
+  this.health -= 1;
+
+  if (this.health <= 0) {
+      this.alive = false;
+      this.zombie.kill();
+
+      return true;
+  }
+
+  return false;
+}
+
+Zombie.prototype.update = function() {
+  //this.turret.rotation = this.game.physics.arcade.angleBetween(this.tank, this.player);
+  //if (this.game.physics.arcade.distanceBetween(this.tank, this.player) < 300) 
+  
+  // @TODO Update the zombie direction
+  // @TODO Update the zombie x and y velocity
+  this.zombie.frame = 1;
+};
