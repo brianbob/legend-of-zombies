@@ -110,11 +110,12 @@ Zombie = function (index, game, player) {
   this.player = player;
   this.alive = true;
   
-  this.zombie = game.add.sprite(x, y, 'dude');
+  this.zombie = game.add.sprite(x, y, 'zombies');
   this.zombie.animations.add('left', [12, 13, 14], 10, true);
   this.zombie.animations.add('right', [24, 25, 26], 10, true);
   this.zombie.animations.add('down', [0, 1, 2], 10, true);
   this.zombie.animations.add('up', [36, 37, 38], 10, true);
+  this.zombie.frame = 1;
 
   // I have no idea what this does.
   this.zombie.anchor.set(0.5);
@@ -150,6 +151,5 @@ Zombie.prototype.update = function() {
   
   // @TODO Update the zombie direction
   // @TODO Update the zombie x and y velocity
-  console.log('zombie update');
   this.zombie.frame = 1;
 };
