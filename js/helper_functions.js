@@ -142,7 +142,7 @@ Zombie.prototype.damage = function() {
   }
 
   return false;
-}
+};
 
 Zombie.prototype.update = function() {
   //this.turret.rotation = this.game.physics.arcade.angleBetween(this.tank, this.player);
