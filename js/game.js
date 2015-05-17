@@ -75,7 +75,7 @@ function update() {
   for (var i = 0; i < zombies.length; i++) {
     if (zombies[i].alive) {
       //enemiesAlive++;
-      game.physics.arcade.collide(zombies, zombies);
+      game.physics.arcade.collide(zombies, zombies[i].zombie);
       game.physics.arcade.overlap(arrows, zombies[i].zombie, arrowHitZombieFace, null, this);
       zombies[i].update();
     }

@@ -180,6 +180,6 @@ function arrowHitZombieFace(zombie, arrow) {
 }
 
 function gameOver() {
-  player.kill()
+  player.kill();
   console.log('you suck! game over...');
 }
