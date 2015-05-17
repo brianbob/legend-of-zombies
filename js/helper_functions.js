@@ -150,5 +150,6 @@ Zombie.prototype.update = function() {
   
   // @TODO Update the zombie direction
   // @TODO Update the zombie x and y velocity
+  console.log('zombie update');
   this.zombie.frame = 1;
 };
