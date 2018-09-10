@@ -1,91 +1,36 @@
+
+//We use window.game because we want it to be accessible from everywhere
+window.game = new Phaser.Game(800, 600, Phaser.AUTO);
+
 // Globals, yo.
-var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update });
-var player;
-var cursors;
-var arrows;
-var zombies;
-var direction;
-var fireRate = 200;
-var nextFire = 0;
-var spacebar;
-var enemiesAlive;
-var enemiesTotal;
+game.globals = {
+  player: null,        // Variable for the player variable.
+  cursors: null,       // Variable for the arrow keys.
+  arrows: null,        // Variable for the arrows array.
+  zombies: [],         // Variable for the zombie array.
+  direction: null,     // Variable for the direction the player is facing.
+  fireRate: 200,       // The rate at which arrows can be fired. In milliseconds I think.
+  damageRate: 200,     // The rate at which zombie damage can be dealt. In milliseconds I think.
+  nextFire: 0,         // Holder for the next time an arrow can be fired.
+  nextDamage: 0,       // Holder for the next time zombie damage can be dealt.
+  zombieDamage: 10,    // Sets the base damage a zombie does to a player.
+  spacebar: null,      // Global spacebar key variable.
+  enter: null,         // Global enter key variable.
+  enemiesTotal: 5,     // Base number of zombies per level.
+  zombieGroup: null,   // Zombie group variable.
+  arrowsLeft: 20,      // Number of arrows to start with.
+  health: 100          // Player health.
+};
 
-function preload() {
-  game.load.image('grass', 'assets/grass3.jpg');
-  game.load.spritesheet('zombies', 'assets/zombies.png', 32, 32);
-  game.load.spritesheet('dude', 'assets/link.png', 32, 40);
-  game.load.image('arrow', 'assets/arrow.png');
-}
+// Create our game states
+game.state.add('boot', boot);
+game.state.add('load', load);
+game.state.add('menu', menu);
+game.state.add('levelOne', levelOne);
+game.state.add('levelTwo', levelTwo);
+game.state.add('levelThree', levelThree);
+game.state.add('gameOver', gameOver);
+game.state.add('victory', victory);
 
-
-function create() {
-
-  //  We're going to be using physics, so enable the Arcade Physics system
-  game.physics.startSystem(Phaser.Physics.ARCADE);
-
-  //  A simple background for our game
-  game.add.tileSprite(0, 0, 800, 600, 'grass');
-
-  // The player and its settings
-  player = game.add.sprite(132, game.world.height - 150, 'dude');
-
-  //  We need to enable physics on the player
-  game.physics.arcade.enable(player);
-
-  //  Player physics properties. Give the little guy a slight bounce.
-  player.body.collideWorldBounds = true;
-
-  //  Our two animations, walking left and right.
-  player.animations.add('left', [9, 10, 11, 12, 13, 14, 15, 16, 17], 10, true);
-  player.animations.add('right', [0, 1, 2, 3, 4, 5, 6, 7, 8], 10, true);
-  player.animations.add('down', [19, 20, 21, 22, 23, 24, 25, 26, 27 ], 10, true);
-  player.animations.add('up', [29, 30, 31, 32, 33, 34, 35, 36, 37 ], 10, true);
-  
-  // create our zombies
-  zombies = [];
-  enemiesTotal = 20;
-  enemiesAlive = 20;
-
-  for (var i = 0; i < enemiesTotal; i++) {
-    zombies.push(new Zombie(i, game, player));
-  }
-
-  // create our arrows
-  arrows = game.add.group();
-  arrows.enableBody = true;
-  arrows.physicsBodyType = Phaser.Physics.ARCADE;
-  // @TODO: Figure out how to manage arrows. Also, print that value to the
-  // screen
-  arrows.createMultiple(30, 'arrow');
-  arrows.setAll('outOfBoundsKill', true);
-  arrows.setAll('checkWorldBounds', true);
-
-  //  Our controls.
-  cursors = game.input.keyboard.createCursorKeys();
-  spacebar = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-}
-
-function update() {
-  updatePlayer();
-  
-  //update zombies
-  //enemiesAlive = 0;
-
-  for (var i = 0; i < zombies.length; i++) {
-    if (zombies[i].alive) {
-      //enemiesAlive++;
-      game.physics.arcade.collide(zombies, zombies[i].zombie);
-      game.physics.arcade.overlap(arrows, zombies[i].zombie, arrowHitZombieFace, null, this);
-      zombies[i].update();
-    }
-  }
-  
-  game.physics.arcade.collide(player, zombies, gameOver, null, this);
-  
-}
-
-
-
-
-
+// Start the game.
+game.state.start('boot');
