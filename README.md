@@ -1,28 +1,9 @@
-# Project Title
-
-Legend of Zombies
+# Legend of Zombies
 
 ## Purpose / History
 
 A silly game I've been working on to learn parser and maybe will turn into an app?
 
-## Getting Started
-
-These instructions will get you a copy of the project up and running on your local machine.
-
-### Instalation
-
-First, clone the repo:
-
-```
-git clone git@github.com:brianbob/legend-of-zombies.git [folder-name]
-```
-
-Then create an apache entry pointing to index.html
-
-### Usage
-
-The game uses arrows and spacebar as controls. Arrows move you while spacebar shoots arrows. Don't let the zombies get you!
 
 ## TODO
 
@@ -46,6 +27,24 @@ The game uses arrows and spacebar as controls. Arrows move you while spacebar sh
    * add in a border to the world.
    * add in a credit state.
    ** credit http://ericskiff.com/music/ for the music.
+
+## Getting Started
+
+These instructions will get you a copy of the project up and running on your local machine.
+
+### Instalation
+
+First, clone the repo:
+
+```
+git clone git@github.com:brianbob/legend-of-zombies.git [folder-name]
+```
+
+Then create an apache entry pointing to index.html and navigate to that URL in a browser.
+
+### Usage
+
+The game uses arrows and spacebar as controls. Arrows move you while spacebar shoots arrows. Don't let the zombies get you!
 
 ## Authors
 
