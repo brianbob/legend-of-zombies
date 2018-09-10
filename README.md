@@ -15,18 +15,18 @@ A silly game I've been working on to learn parser and maybe will turn into an ap
    * [Done] add multiple levels
    * [Done] add sound?
    * add more menus or menu options?
-   ** add in hit b for brian, m for mark, k for kevin, a for adam.
-   ** brad mode? (fat guy from pokemon, maybe another splash screen)
+     * add in hit b for brian, m for mark, k for kevin, a for adam.
+     * brad mode? (fat guy from pokemon, maybe another splash screen)
    * add end game screen/state
    * add additional types of zombies
    * add in different attributes and heath for players/zombies
-   ** different levels of health
-   ** kevin fights stumps, not zombies.
+     * different levels of health
+     * kevin fights stumps, not zombies.
    * add ammo and possibly other drops to zombie kills
    * add in trees/foliage.
    * add in a border to the world.
    * add in a credit state.
-   ** credit http://ericskiff.com/music/ for the music.
+     * credit http://ericskiff.com/music/ for the music.
 
 ## Getting Started
 
