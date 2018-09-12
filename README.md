@@ -24,6 +24,7 @@ A silly game I've been working on to learn parser and maybe will turn into an ap
    * Add ammo and possibly other drops to zombie kills
    * Add in trees/foliage.
    * Add in a border to the world.
+     * Border of trees or mountains or something?
    * Add in a credit state.
      * Credit http://ericskiff.com/music/ for the music.
 

@@ -11,10 +11,10 @@ load.prototype = {
     game.load.image('grass', 'assets/grass3.jpg');
     game.load.image('arrow', 'assets/arrow.png');
 
-    game.load.audio('start', 'music/all_of_us_start.mp3');
-    game.load.audio('levelOne', 'music/jumpshot_level_one.mp3');
-    game.load.audio('levelTwo', 'music/chibi_ninja_level_two.mp3');
-    game.load.audio('levelThree', 'music/were_the_resistors_level_three.mp3');
+    game.load.audio('start', ['music/all_of_us_start.mp3', 'music/all_of_us_start.ogg']);
+    game.load.audio('levelOne', ['music/jumpshot_level_one.mp3', 'music/jumpshot_level_one.ogg']);
+    game.load.audio('levelTwo', ['music/chibi_ninja_level_two.mp3', 'music/chibi_ninja_level_two.ogg']);
+    game.load.audio('levelThree', ['music/were_the_resistors_level_three.mp3', 'music/were_the_resistors_level_three.ogg'] );
   },
 
   create: function () {
