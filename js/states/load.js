@@ -23,7 +23,7 @@ load.prototype = {
     game.globals.spacebar = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
     game.globals.enter = this.game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
 
-        console.log('loaded, starting menu....');
+    console.log('loaded, starting menu....');
     game.state.start('menu');
   }
 };
